@@ -45,7 +45,7 @@ app.post('/mahasiswa', (req, res) => {
 });
 
 app.put('/mahasiswa', (req, res) => {
-  const { nim, namaLengkap, kelas, alamat } = req.body;
+  const { nim, namaLengkap, kelas, alamat } = req.body; //SEsuaikan sama yang di postman objeknya
   const sql = `UPDATE mahasiswa SET nama_lengkap = '${namaLengkap}', kelas = '${kelas}', alamat ='${alamat}' WHERE nim = ${nim}`;
 
   db.query(sql, (err, fields) => {
