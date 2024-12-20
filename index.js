@@ -3,25 +3,31 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const db = require('./connection');
+const response = require('./response');
 
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('mantap');
-});
-app.get('/mahasiswa/:nim', (req, res) => {
-  const nim = req.params.nim;
-  res.send(`Mahasiswa berdasarkan Nim : ${nim}`);
+  response(200, 'ini data', 'ini message', res);
 });
 
-app.post('/mahasiswa/post', (req, res) => {
-  res.send('Ini Postingan Saya');
+app.get('/mahasiswa', (req, res) => {
+  response(200, 'mahasiswa gett list', res);
 });
-app.put('/mahasiswa/put', (req, res) => {
-  res.send('Ini Untuk Update Data');
+
+app.get('/mahasiswa/:nim', (req, res) => {
+  const nim = req.params.nim;
+  response(200, `Mahasiswa berdasarkan Nim : ${nim}`, res);
 });
-app.delete('/mahasiswa/delete', (req, res) => {
-  res.send('ini Untuk Hapus Data');
+
+app.post('/mahasiswa', (req, res) => {
+  response(200, 'Ini Postingan Saya', res);
+});
+app.put('/mahasiswa', (req, res) => {
+  response(200, 'Ini Untuk Update Data', res);
+});
+app.delete('/mahasiswa', (req, res) => {
+  response(200, 'ini Untuk Hapus Data', res);
 });
 
 app.listen(port, () => {
