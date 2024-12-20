@@ -1,8 +1,9 @@
 const respons = (statusCode, data, message, res) => {
   res.json(statusCode, [
     {
-      data,
+      payload: data,
       message,
+
       metadata: {
         prev: '',
         next: '',
